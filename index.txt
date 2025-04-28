@@ -1,0 +1,20 @@
+1:"$Sreact.fragment"
+2:I[3686,["3","static/chunks/3-4df1f24fb2a21d9a.js","427","static/chunks/427-c4dcfc0dade77c3d.js","177","static/chunks/app/layout-89778763ed6f9c65.js"],"StateProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+5:I[9543,["345","static/chunks/app/not-found-df1d0e0e0b605915.js"],"default"]
+6:I[2558,["3","static/chunks/3-4df1f24fb2a21d9a.js","427","static/chunks/427-c4dcfc0dade77c3d.js","177","static/chunks/app/layout-89778763ed6f9c65.js"],"Toaster"]
+7:I[594,["3","static/chunks/3-4df1f24fb2a21d9a.js","820","static/chunks/820-3c954ea421f7278b.js","874","static/chunks/874-b6e68102560136fe.js","165","static/chunks/165-035f1153e7484d76.js","974","static/chunks/app/page-d4a3454e6b53d0c8.js"],"default"]
+8:I[6874,["3","static/chunks/3-4df1f24fb2a21d9a.js","820","static/chunks/820-3c954ea421f7278b.js","874","static/chunks/874-b6e68102560136fe.js","165","static/chunks/165-035f1153e7484d76.js","974","static/chunks/app/page-d4a3454e6b53d0c8.js"],""]
+9:I[9665,[],"OutletBoundary"]
+c:I[9665,[],"ViewportBoundary"]
+e:I[9665,[],"MetadataBoundary"]
+10:I[6614,[],""]
+:HL["/WoZ_App/_next/static/media/569ce4b8f30dc480-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/WoZ_App/_next/static/media/93f479601ee12b01-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/WoZ_App/_next/static/css/bfa1328b87015eb7.css","style"]
+0:{"P":null,"b":"ZElapG4lCWEYz5b7CnfMA","p":"/WoZ_App","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/WoZ_App/_next/static/css/bfa1328b87015eb7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_66290a __variable_5fd1cd antialiased","children":["$","$L2",null,{"children":[["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L5",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L6",null,{}]]}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"className":"flex flex-col items-center justify-center min-h-screen py-2","children":["$","main",null,{"className":"flex flex-col items-center justify-center w-full flex-1 px-20 text-center","children":[["$","h1",null,{"className":"text-4xl font-bold","children":["Welcome to ",["$","span",null,{"className":"text-primary","children":"Design Genie"}]]}],["$","p",null,{"className":"mt-3 text-2xl","children":"Let us help you design your dream space!"}],["$","div",null,{"className":"mt-6","children":["$","$L7",null,{}]}],["$","div",null,{"className":"mt-6 text-sm text-muted-foreground","children":["$","$L8",null,{"href":"/wizard-entrance","className":"hover:underline","children":"Wizard Dashboard Access"}]}]]}]}],"$undefined",null,["$","$L9",null,{"children":["$La","$Lb",null]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","7utOWb7rD2YWdKMkqewzm",{"children":[["$","$Lc",null,{"children":"$Ld"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Le",null,{"children":"$Lf"}]]}],false]],"m":"$undefined","G":["$10","$undefined"],"s":false,"S":true}
+d:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+b:null
+f:[["$","title","0",{"children":"Design Genie - Interior Design Assistant"}],["$","meta","1",{"name":"description","content":"Get personalized interior design recommendations"}],["$","link","2",{"rel":"icon","href":"/WoZ_App/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
