@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils';
 import { useStateContext } from '@/lib/state-context';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const feedbackSchema = z.object({
   content: z.string().min(5, { message: 'Response must be at least 5 characters' }),
@@ -64,6 +65,7 @@ export default function WizardDashboardInner() {
     const [editingRecommendationId, setEditingRecommendationId] = useState<string | null>(null);
     const [activeSessions, setActiveSessions] = useState<{id: string, customerProfile: string, timestamp: number}[]>([]);
     const [sessionSelected, setSessionSelected] = useState(false);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
     const feedbackForm = useForm<z.infer<typeof feedbackSchema>>({
       resolver: zodResolver(feedbackSchema),
@@ -539,18 +541,28 @@ export default function WizardDashboardInner() {
                                 <p className="text-sm mb-3">{recommendation.explanation}</p>
                                 {recommendation.imageUrl ? (
                                   <div>
-                                    <img 
-                                      src={recommendation.imageUrl} 
-                                      alt={recommendation.item}
-                                      className="w-full h-36 object-cover rounded-md"
-                                    />
+                                    <div 
+                                      className="relative overflow-hidden rounded-md cursor-pointer transition-all hover:shadow-lg"
+                                      onClick={() => recommendation.imageUrl ? setSelectedImage(recommendation.imageUrl) : null}
+                                    >
+                                      <div className="aspect-video relative">
+                                        <img 
+                                          src={recommendation.imageUrl} 
+                                          alt={recommendation.item}
+                                          className="absolute inset-0 w-full h-full object-contain bg-neutral-50"
+                                        />
+                                      </div>
+                                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end justify-center pb-2">
+                                        <span className="text-white text-xs px-2 py-1 bg-black/60 rounded-full">Click to preview</span>
+                                      </div>
+                                    </div>
                                     <Button 
                                       variant="outline" 
                                       size="sm" 
                                       className="mt-2 w-full"
                                       onClick={() => {
                                         setEditingRecommendationId(recommendation.id);
-                                        imageForm.setValue('imageUrl', recommendation.imageUrl || '');
+                                        imageForm.setValue('imageUrl', recommendation.imageUrl ? recommendation.imageUrl : '');
                                       }}
                                     >
                                       Change Image
@@ -623,6 +635,28 @@ export default function WizardDashboardInner() {
             Open User View
           </Button>
         </div>
+  
+        {/* Image preview modal */}
+        <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
+            <div className="relative w-full bg-white p-1 rounded-md">
+              {selectedImage && (
+                <img 
+                  src={selectedImage} 
+                  alt="Full size image" 
+                  className="w-full h-auto max-h-[80vh] object-contain rounded"
+                />
+              )}
+              <Button 
+                className="absolute top-2 right-2 h-8 w-8 p-0 rounded-full bg-black/70 hover:bg-black/90" 
+                onClick={() => setSelectedImage(null)}
+              >
+                <span className="sr-only">Close</span>
+                <span aria-hidden>×</span>
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   } 

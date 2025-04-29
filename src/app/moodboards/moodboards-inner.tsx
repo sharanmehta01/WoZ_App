@@ -16,6 +16,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from '@/components/ui/use-toast';
 import { useStateContext } from '@/lib/state-context';
 import Link from 'next/link';
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const feedbackSchema = z.object({
   feedback: z.string().min(10, {
@@ -29,6 +30,7 @@ export default function MoodboardsInnerPage() {
     const [loading, setLoading] = useState(true);
     const [showWizardPrompt, setShowWizardPrompt] = useState(true);
     const chatEndRef = useRef<HTMLDivElement>(null);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
     const { 
       sessionState, 
@@ -311,11 +313,23 @@ export default function MoodboardsInnerPage() {
                       <CardContent>
                         <p className="text-left mb-4">{recommendation.explanation}</p>
                         {recommendation.imageUrl && (
-                          <img
-                            src={recommendation.imageUrl}
-                            alt={`Recommendation: ${recommendation.item}`}
-                            className="w-full h-48 object-cover rounded-md shadow-md"
-                          />
+                          <>
+                            <div 
+                              className="relative overflow-hidden rounded-md shadow-md cursor-pointer transition-all hover:shadow-lg"
+                              onClick={() => setSelectedImage(recommendation.imageUrl)}
+                            >
+                              <div className="aspect-video relative">
+                                <img
+                                  src={recommendation.imageUrl}
+                                  alt={`Recommendation: ${recommendation.item}`}
+                                  className="absolute inset-0 w-full h-full object-contain bg-neutral-50"
+                                />
+                              </div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end justify-center pb-2">
+                                <span className="text-white text-xs px-2 py-1 bg-black/60 rounded-full">Click to enlarge</span>
+                              </div>
+                            </div>
+                          </>
                         )}
                       </CardContent>
                     </Card>
@@ -395,6 +409,28 @@ export default function MoodboardsInnerPage() {
             </div>
           )}
         </main>
+  
+        {/* Image preview modal */}
+        <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
+            <div className="relative w-full bg-white p-1 rounded-md">
+              {selectedImage && (
+                <img 
+                  src={selectedImage} 
+                  alt="Full size image" 
+                  className="w-full h-auto max-h-[80vh] object-contain rounded"
+                />
+              )}
+              <Button 
+                className="absolute top-2 right-2 h-8 w-8 p-0 rounded-full bg-black/70 hover:bg-black/90" 
+                onClick={() => setSelectedImage(null)}
+              >
+                <span className="sr-only">Close</span>
+                <span aria-hidden>×</span>
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
